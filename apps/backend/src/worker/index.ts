@@ -11,7 +11,7 @@ import { promisify } from 'util';
 // });
 
 const ai = new GoogleGenAI({
-    apiKey: "AIzaSyAZT_2Mqg6AsXGpjytM1FWqxJyCf2Sp8VY"
+    apiKey: process.env.GEMINI_API_KEY
 });
 
 // Promisify exec to make it awaitable
