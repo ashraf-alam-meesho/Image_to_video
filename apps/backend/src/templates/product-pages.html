@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Pages</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+        }
+        
+        .page {
+            background: white;
+            padding: 40px;
+            margin: 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        
+        .content-section {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+            width: 100%;
+        }
+        
+        .content-section img {
+            max-width: 400px;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            flex-shrink: 0;
+        }
+        
+        .content-text {
+            flex: 1;
+            font-size: 18px;
+            line-height: 1.8;
+            color: #555;
+        }
+        
+        /* Reverse layout for second page */
+        .page-2 .content-section {
+            flex-direction: row-reverse;
+        }
+        
+        @media (max-width: 768px) {
+            .content-section {
+                flex-direction: column;
+                text-align: center;
+                gap: 20px;
+            }
+            
+            .page-2 .content-section {
+                flex-direction: column;
+            }
+            
+            .content-section img {
+                max-width: 100%;
+            }
+            
+            .page {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Page 1 -->
+    <div class="page">
+        <div class="content-section">
+            <img src="{{image1}}" alt="Product Image 1" />
+            <div class="content-text">
+                <p>{{text1}}</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Page 2 -->
+    <div class="page page-2">
+        <div class="content-section">
+            <img src="{{image2}}" alt="Product Image 2" />
+            <div class="content-text">
+                <p>{{text2}}</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Page 3 -->
+    <div class="page">
+        <div class="content-section">
+            <img src="{{image3}}" alt="Product Image 3" />
+            <div class="content-text">
+                <p>{{text3}}</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html> 

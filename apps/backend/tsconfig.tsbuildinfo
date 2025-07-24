@@ -1,1 +1,1 @@
-{"root":["./src/index.ts"],"version":"5.8.3"}
+{"root":["./src/generate-and-screenshot.ts","./src/index.ts","./src/router/prompt.ts","./src/types/productlistingrequest.ts","./src/utils/screenshot-generator.ts","./src/utils/template-renderer.ts","./src/worker/index.ts"],"version":"5.8.3"}

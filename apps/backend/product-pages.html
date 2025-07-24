@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Pages</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+        }
+        
+        .page {
+            background: white;
+            padding: 40px;
+            margin: 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        
+        .page-header {
+            text-align: center;
+            margin-bottom: 40px;
+            color: #333;
+            border-bottom: 2px solid #eee;
+            padding-bottom: 20px;
+        }
+        
+        .content-section {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+            width: 100%;
+        }
+        
+        .content-section img {
+            max-width: 400px;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            flex-shrink: 0;
+        }
+        
+        .content-text {
+            flex: 1;
+            font-size: 18px;
+            line-height: 1.8;
+            color: #555;
+        }
+        
+        /* Reverse layout for second page */
+        .page-2 .content-section {
+            flex-direction: row-reverse;
+        }
+        
+        @media (max-width: 768px) {
+            .content-section {
+                flex-direction: column;
+                text-align: center;
+                gap: 20px;
+            }
+            
+            .page-2 .content-section {
+                flex-direction: column;
+            }
+            
+            .content-section img {
+                max-width: 100%;
+            }
+            
+            .page {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Page 1 -->
+    <div class="page">
+        <div class="page-header">
+            <h1>Product Page 1</h1>
+        </div>
+        <div class="content-section">
+            <img src="https://nestasia.in/cdn/shop/files/waterbottlessetof3_27.jpg?v&#x3D;1698991535&amp;width&#x3D;600" alt="Product Image 1" />
+            <div class="content-text">
+                <p>This is the first product description. It showcases amazing features and benefits that customers will love.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Page 2 -->
+    <div class="page page-2">
+        <div class="page-header">
+            <h1>Product Page 2</h1>
+        </div>
+        <div class="content-section">
+            <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w&#x3D;600&amp;h&#x3D;400&amp;fit&#x3D;crop" alt="Product Image 2" />
+            <div class="content-text">
+                <p>Our second product offers incredible value and innovative design. Perfect for modern lifestyles.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Page 3 -->
+    <div class="page">
+        <div class="page-header">
+            <h1>Product Page 3</h1>
+        </div>
+        <div class="content-section">
+            <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?w&#x3D;600&amp;h&#x3D;400&amp;fit&#x3D;crop" alt="Product Image 3" />
+            <div class="content-text">
+                <p>The third product completes our amazing collection. Built with quality and attention to detail.</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html> 

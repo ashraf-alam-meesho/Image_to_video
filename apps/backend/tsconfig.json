@@ -1,4 +1,10 @@
 {
+  "exclude": [
+    "playwright.config.ts",
+    "playwright.config.js",
+    "node_modules",
+    "dist"
+  ],
   "compilerOptions": {
     /* Visit https://aka.ms/tsconfig to read more about this file */
 
