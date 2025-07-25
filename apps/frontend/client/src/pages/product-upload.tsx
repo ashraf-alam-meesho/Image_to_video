@@ -17,6 +17,10 @@ import {
 } from "@/components/ui/form";
 import { FileUpload } from "@/components/ui/file-upload";
 import { useToast } from "@/hooks/use-toast";
+import { useLocation } from "wouter";
+import { List } from "lucide-react";
+
+const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
 
 const productFormSchema = z.object({
   name: z
@@ -36,6 +40,7 @@ export default function ProductUpload() {
   const [imageUrls, setImageUrls] = useState<string[]>([]);
   const { toast } = useToast();
   const queryClient = useQueryClient();
+  const [, setLocation] = useLocation();
 
   const form = useForm<ProductFormData>({
     resolver: zodResolver(productFormSchema),
@@ -49,7 +54,7 @@ export default function ProductUpload() {
 
   const submitProductMutation = useMutation({
     mutationFn: async (data: any) => {
-      const backendUrl = "${Backend_url}"; // This will be configured later
+      const backendUrl = "${BACKEND_URL}"; // This will be configured later
       const response = await fetch(backendUrl, {
         method: "POST",
         headers: {
@@ -93,6 +98,10 @@ export default function ProductUpload() {
     setImageUrls(urls);
   };
 
+  const handleMyListingsClick = () => {
+    setLocation("/listings");
+  };
+
   const onSubmit = (data: ProductFormData) => {
     // Get successfully uploaded images
     const successfullyUploadedImages = uploadedImages
@@ -133,6 +142,13 @@ export default function ProductUpload() {
                 Add New Product
               </h1>
             </div>
+            <button
+              onClick={handleMyListingsClick}
+              className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md text-sm font-medium transition-colors flex items-center gap-2"
+            >
+              <List size={16} />
+              My Listings
+            </button>
           </div>
         </div>
       </header>

@@ -2,16 +2,19 @@ import { createClient } from "redis";
 import { GoogleGenAI } from "@google/genai";
 import { generateCompleteHTMLAndScreenshots } from "../generate-and-screenshot";
 import { exec } from 'child_process';
+import pg, { Client } from 'pg';
 // import dotenv from 'dotenv';
 // dotenv.config();
 import { promisify } from 'util';
+
+const pgClient = new Client(process.env.DATABASE_URL);
 
 // const redisClient = createClient({
 //     url: process.env.REDIS_URL
 // });
 
 const ai = new GoogleGenAI({
-    apiKey: process.env.GEMINI_API_KEY
+    apiKey: "AIzaSyAZT_2Mqg6AsXGpjytM1FWqxJyCf2Sp8VY"
 });
 
 // Promisify exec to make it awaitable
@@ -25,6 +28,7 @@ async function main() {
     const test_product_description = "High-quality noise-cancelling wireless headphones with 30-hour battery life and premium sound quality";
     const test_image_links = "https://images.unsplash.com/photo-1505740420928-5e560c06d30e,https://images.unsplash.com/photo-1505740106531-4243f3831c78,https://images.unsplash.com/photo-1505751104546-4b63c93054b1";
 
+    await pgClient.connect();
     await generateProductPages(test_product_id, test_product_name, test_product_description, test_image_links);
 
     // while(true) {
@@ -98,6 +102,19 @@ async function generateProductPages(product_id: string, product_name: string, pr
             console.error('Script errors:', stderr);
         }
         console.log('Video generation completed successfully');
+
+        // logic to generate video and save it to s3
+        const video_url = "random_url";
+        const query = `
+            UPDATE IMAGE_DETAILS SET video_generated_url = $1 and status = 'completed' WHERE product_id = $2
+        `;
+
+        try {
+            await pgClient.query(query, [video_url, product_id]);
+        } catch (error) {
+            console.error('Error updating database:', error);
+            throw error;
+        }
     } catch (error) {
         console.error('Script execution failed:', error);
         throw error; // Re-throw to handle in the subscriber
